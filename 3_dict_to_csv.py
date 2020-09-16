@@ -10,12 +10,26 @@
 
 """
 
+import csv
+
+list_of_dicts = [{'name': 'Иван', 'age': 25, 'job': 'электрик'},
+                 {'name': 'Галя', 'age': 44, 'job': 'бухгалтер'},
+                 {'name': 'Валерий', 'age': 54, 'job': 'летчик-испытатель'},
+                 {'name': 'Кирилл', 'age': 29, 'job': 'безработный'}]
+
+
 def main():
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    with open('vot_eti_rebyata.csv', 'w', encoding='utf-8', newline='') as f:
+        fields = ['name', 'age', 'job']
+        writer = csv.DictWriter(f, fields, delimiter=';')
+        writer.writeheader()
+        for row in list_of_dicts:
+            writer.writerow(row)
+
 
 if __name__ == "__main__":
     main()
